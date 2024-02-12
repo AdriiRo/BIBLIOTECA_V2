@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+
 public class Main {
 
     private static final String OPCIÓN_EN_DESARROLLO = "Opción aún en desarrollo...";
@@ -19,7 +21,7 @@ public class Main {
 
     public static String SEPARADOR = "----------------------------------- \n";
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Libro libro1 = new Libro("Cien años de soledad", "Gabriel García Márquez", 1967, 978030, 2);
         Libro libro2 = new Libro("El Principito", "Antoine de Saint-Exupéry", 1943, 978031, 3);
@@ -61,15 +63,23 @@ public class Main {
         System.out.println(MSG_SELEC_BIBLIOTECA + REF_BIBLIOTECA_1 + REF_BIBLIOTECA_2);
         selectorBiblioteca = EntradaDatos.leerEntero();
 
-        switch (selectorBiblioteca) {      // Antes tenía dos métodos diferentes, pero como realmente funciona por parametro, puedo eliminar uno, ya que el determinante para la ejecución de una biblioteca u otra, es el parámetro que recibe el método
-            case 1:
-                ejecutarBiblioteca(biblioteca1);    
-                break;
-            case 2:
-                ejecutarBiblioteca(biblioteca2);
-            default:
-                System.out.println(BIBIOTECA_AÚN_NO_DISPONIBLE);
-                break;
+        try {
+            
+            switch (selectorBiblioteca) {      // Antes tenía dos métodos diferentes, pero como realmente funciona por parametro, puedo eliminar uno, ya que el determinante para la ejecución de una biblioteca u otra, es el parámetro que recibe el método
+                case 1:
+                    ejecutarBiblioteca(biblioteca1);    
+                    break;
+                case 2:
+                    ejecutarBiblioteca(biblioteca2);
+                default:
+                    System.out.println(BIBIOTECA_AÚN_NO_DISPONIBLE);
+                    break;
+            }
+
+        } catch (InputMismatchException e) {
+            System.out.println("Error. Introduce un carácter válido");
+        } catch (Exception e) {
+            System.out.println("Error durante la ejecución");
         }
 
     }

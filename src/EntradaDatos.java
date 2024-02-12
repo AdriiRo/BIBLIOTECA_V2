@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EntradaDatos { // Es una clase que nos permite gestionar la entrada de datos en nuestro programa
@@ -11,11 +12,18 @@ public class EntradaDatos { // Es una clase que nos permite gestionar la entrada
     }
 
     public static int leerEntero() {    // SI SE CIERRAN LOS SCANNERS DA ERROR, SIN CERRARLOS FUNCIONA BIEN
+        
         int input = 0;
         Scanner sc = new Scanner (System.in);
-        input = sc.nextInt(); 
-        sc.nextLine(); // Evita error (sigue saltando en consultarEjemplares)
+        try {
+            input = sc.nextInt();
+            sc.nextLine(); // Evita error (sigue saltando en consultarEjemplares)
+        } catch (InputMismatchException e) {
+            System.out.println("Error de lectura. Reintente");
+        } 
+        
         return input;
+        
     }
 
     public static double leerDouble() {
