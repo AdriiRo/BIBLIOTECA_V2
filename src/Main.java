@@ -37,15 +37,14 @@ public class Main {
         Biblioteca biblioteca2 = new Biblioteca("Biblioteca 2", "Dirección 2", librosBiblioteca2);
 
         // Precargado de la biblioteca 1
-        biblioteca1.anadirLibroPrecargado(librosBiblioteca1, libro1);
-        biblioteca1.anadirLibroPrecargado(librosBiblioteca1, libro2);
-        biblioteca1.anadirLibroPrecargado(librosBiblioteca1, libro3);
+        biblioteca1.anadirLibro(librosBiblioteca1, libro1);
+        biblioteca1.anadirLibro(librosBiblioteca1, libro2);
+        biblioteca1.anadirLibro(librosBiblioteca1, libro3);
 
         // Precargado de la biblioteca 2
-        biblioteca2.anadirLibroPrecargado(librosBiblioteca2, libro4);
-        biblioteca2.anadirLibroPrecargado(librosBiblioteca2, libro5);
-        biblioteca2.anadirLibroPrecargado(librosBiblioteca2, libro6);
-
+        biblioteca2.anadirLibro(librosBiblioteca2, libro4);
+        biblioteca2.anadirLibro(librosBiblioteca2, libro5);
+        biblioteca2.anadirLibro(librosBiblioteca2, libro6);
         // La línea de abajo era un simple test para verificar que cada biblioteca tiene
         // su propio contador, para ello el contador NO debe de ser estático.
 
@@ -62,7 +61,7 @@ public class Main {
         System.out.println(MSG_SELEC_BIBLIOTECA + REF_BIBLIOTECA_1 + REF_BIBLIOTECA_2);
         selectorBiblioteca = EntradaDatos.leerEntero();
 
-        if (selectorBiblioteca == 1) {
+        if (selectorBiblioteca == 1) {  // Cambiar a swictch
             ejecutarBiblioteca1(biblioteca1);
         } else if (selectorBiblioteca == 2) {
             ejecutarBiblioteca2(biblioteca2);

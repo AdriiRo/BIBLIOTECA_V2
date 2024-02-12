@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 
 public class Biblioteca {
-
+    
     // Constantes (Mensajes de salida del programa)
 
     public static final String MSG_RESULT_BUSQ = "Resultado de la búsqueda: \n";
@@ -109,7 +109,7 @@ public class Biblioteca {
 
     }
 
-    public void anadirLibroPrecargado(Libro[] libros, Libro l) { // Permite añadir a una biblioteca un libro precargado
+    public void anadirLibro(Libro[] libros, Libro l) { // Permite añadir a una biblioteca un libro precargado
                                                                  // en memoria (instanciado en el Main)
 
         libros[contadorLibros] = l;
@@ -249,13 +249,15 @@ public class Biblioteca {
 
             System.out.println("Esta biblioteca cuenta con " + contadorLibros + " libros actualmente");
 
-            System.out.println(MSG_ISBN_CHECK_EJEMPLARES);
-            int inputISBN = EntradaDatos.leerEntero();
+            // El siguiente fragmento de código invalida la consulta de ejemplares mediante ISBN
 
+            System.out.println("Libros de " + nombre + " :  \n");
+            
             for (int i = 0; i < libros.length; i++) {
-                if (inputISBN == libros[i].getCodigoISBN()) {
-                    System.out.println("Hay " + libros[i].getNumEjemplares() + " ejemplares disponibles.");
+                if (libros[i] == null) {    // Evita mostrar el error al capturar la excepción (no corresponde el mensaje de error mostrado por la excepción, con el error que se pretende evitar en este caso).
                     break;
+                } else {
+                    System.out.println(" · " + libros[i].toString());
                 }
             }
 

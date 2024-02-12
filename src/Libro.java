@@ -60,6 +60,11 @@ public class Libro {
 
     }
 
+    @Override
+    public String toString() {
+        return "Título:"  + titulo + "  |  Autor:"  + autor + "  |  ISBN:" + codigoISBN + "  | Ejemplares disponibles: " + numEjemplares;
+    }
+
     
 
     

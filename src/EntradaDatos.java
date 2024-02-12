@@ -14,6 +14,7 @@ public class EntradaDatos { // Es una clase que nos permite gestionar la entrada
         int input = 0;
         Scanner sc = new Scanner (System.in);
         input = sc.nextInt(); 
+        sc.nextLine(); // Evita error (sigue saltando en consultarEjemplares)
         return input;
     }
 
