@@ -61,17 +61,20 @@ public class Main {
         System.out.println(MSG_SELEC_BIBLIOTECA + REF_BIBLIOTECA_1 + REF_BIBLIOTECA_2);
         selectorBiblioteca = EntradaDatos.leerEntero();
 
-        if (selectorBiblioteca == 1) {  // Cambiar a swictch
-            ejecutarBiblioteca1(biblioteca1);
-        } else if (selectorBiblioteca == 2) {
-            ejecutarBiblioteca2(biblioteca2);
-        } else {
-            System.out.println(BIBIOTECA_AÚN_NO_DISPONIBLE);
+        switch (selectorBiblioteca) {      // Antes tenía dos métodos diferentes, pero como realmente funciona por parametro, puedo eliminar uno, ya que el determinante para la ejecución de una biblioteca u otra, es el parámetro que recibe el método
+            case 1:
+                ejecutarBiblioteca(biblioteca1);    
+                break;
+            case 2:
+                ejecutarBiblioteca(biblioteca2);
+            default:
+                System.out.println(BIBIOTECA_AÚN_NO_DISPONIBLE);
+                break;
         }
 
     }
 
-    public static void ejecutarBiblioteca1(Biblioteca b) {
+    public static void ejecutarBiblioteca(Biblioteca b) {
 
         int selectorOption = 0;
 
@@ -126,59 +129,4 @@ public class Main {
 
     }
 
-    public static void ejecutarBiblioteca2(Biblioteca b) {
-
-        int selectorOption = 0;
-
-        do {
-            System.out.println("Bienvenido a " + b.getNombre() + " , " + b.getDireccion());
-            System.out.println(
-                    MSG_SELEC_OPC + OPCION_1 + OPCION_2 + OPCION_3 + OPCION_4 + OPCION_5 + OPCION_6 + OPCION_7);
-            selectorOption = EntradaDatos.leerEntero();
-            switch (selectorOption) {
-                case 1:
-                    b.sacarLibro();
-                    break;
-                case 2:
-                    b.devolverLibro();
-                    break;
-                case 3:
-                    b.anadirLibro();
-                    break;
-                case 4:
-                    b.eliminarLibro();
-                    break;
-                case 5:
-                    b.consultarEjemplares();
-                    break;
-                case 6:
-                    b.modificarEjemplares();
-                    break;
-                case 7:
-
-                    System.out.println(MSG_SELECTOR_BUSQ);
-                    int selectorTipoBusqueda = EntradaDatos.leerEntero();
-
-                    switch (selectorTipoBusqueda) {
-                        case 1:
-                            b.buscarLibroPorAutor();
-                            break;
-                        case 2:
-                            b.buscarLibroPorTitulo();
-                            break;
-                        case 3:
-                            b.buscarLibroPorISBN();
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-
-                default:
-                    System.out.println(OPCIÓN_EN_DESARROLLO);
-                    break;
-            }
-        } while (selectorOption != 0);
-
-    }
 }
